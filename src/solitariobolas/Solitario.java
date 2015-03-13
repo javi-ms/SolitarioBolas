@@ -92,7 +92,7 @@ public class Solitario {
             System.out.println("prueba fila -1");
             
         }
-        if(posFilaOrigen==posFilaFinal){
+        else{
             solitario[posColumnaFinal][posFilaFinal+1]=" ";
             System.out.println("prueba fila +1");
         }
@@ -100,8 +100,7 @@ public class Solitario {
         if (posColumnaOrigen<posColumnaFinal) {
             solitario[posColumnaFinal-1][posFilaFinal]=" ";
             System.out.println("prueba Columna -1");
-        }
-        if (posColumnaOrigen==posColumnaFinal) {
+        }else{
             solitario[posColumnaFinal+1][posFilaFinal]=" ";
             System.out.println("prueba Columna +1");
         }
