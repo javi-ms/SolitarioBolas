@@ -58,7 +58,7 @@ public class Solitario {
     }
 
     public String mostrarTablero() {
-        tablero = "";
+        tablero="";
         for (int i = 0; i < FIL; i++) {
             for (int j = 0; j < COL; j++) {
                 //se usa el += para que se añada a lo que ya halla 
@@ -72,30 +72,49 @@ public class Solitario {
 
     public String getMovimientos(int posicionColumna, int posicionFila, int posColumnaFinal, int posFilaFinal) {
 
+        /*queremos que nos recoga la informacion de la posicion inicial
+         y que nos la mueva a la posicion final*/
+        //Contenido posicion Inicial
+        
         String posInicial = solitario[posicionColumna][posicionFila];
-
+        
         //Mostrar en pantalla
         System.out.println(posInicial);
-        System.out.println("posicion columna : " + posicionColumna);
-        System.out.println("posicion fila : " + posicionFila);
-        System.out.println("posicion columna final: " + posColumnaFinal);
-        System.out.println("posicion fila final: " + posFilaFinal);
-
-        solitario[posColumnaFinal][posFilaFinal] = posInicial;
-        posInicial = " ";
-
+        System.out.println("posicion columna : "+posicionColumna);
+        System.out.println("posicion fila : "+ posicionFila);
+        System.out.println("posicion columna final: "+posColumnaFinal);
+        System.out.println("posicion fila final: "+ posFilaFinal);
+    
+        solitario[posColumnaFinal][posFilaFinal]=posInicial;
+        solitario[posicionColumna][posicionFila]=" ";
         
-        if (posicionFila < posFilaFinal) {
-            solitario[posColumnaFinal][posFilaFinal - 1] = " ";
-        } else {
-            solitario[posColumnaFinal][posFilaFinal + 1] = " ";
+        
+        if (posicionFila<posFilaFinal) {
+            posInicial = solitario[posColumnaFinal][posFilaFinal-1]=" ";
+        }else{
+            posInicial = solitario[posColumnaFinal][posFilaFinal+1]=" ";
         }
+        
+        if (posicionColumna<posColumnaFinal) {
+            posInicial = solitario[posColumnaFinal-1][posFilaFinal]=" ";
+        }else{
+            posInicial = solitario[posColumnaFinal+1][posFilaFinal]=" ";
+        }
+       
+   
 
-        if (posicionColumna < posColumnaFinal) {
-            solitario[posColumnaFinal - 1][posFilaFinal] = " ";
-        } else {
-            solitario[posColumnaFinal + 1][posFilaFinal] = " ";
-        }
+        //Contenido Posicion Final
+//        String posAMover = solitario[posColumnaFinal][posFilaFinal];
         return posInicial;
     }
+//    public String colision(int posicionColumnaFinal, int posicionFilaFinal ){
+//        
+//        //Si en la posicion Adyacente hay un "*" y la siguiente esta vacio que se mueva
+//        String posFinal=solitario[posicionColumnaFinal][posicionFilaFinal];
+//        if (posFinal=="*" && (posFinal+2).isEmpty()) {
+//            System.out.println();
+//        }
+//        return "pon otro movimiento";
+//    }
+
 }
