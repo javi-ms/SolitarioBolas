@@ -84,31 +84,41 @@ public class Solitario {
         solitario[posColumnaFinal][posFilaFinal] = "*";
         solitario[posColumnaOrigen][posFilaOrigen] = " ";
 
-        //movimiento vertical
-        if (posColumnaOrigen == posColumnaFinal) {
-            //para abajo
-            if (posFilaOrigen < posFilaFinal) {
-                solitario[posColumnaFinal][posFilaFinal - 1] = " ";
-                System.out.println("prueba fila -1");
-                //para arriba
-            } else {
-                solitario[posColumnaFinal][posFilaFinal + 1] = " ";
-                System.out.println("prueba fila +1");
+        if (posColumnaFinal > 1 && posColumnaFinal < 5) {
+            //movimiento vertical
+            if (posColumnaOrigen == posColumnaFinal) {
+                //para abajo
+                if (posFilaOrigen < posFilaFinal) {
+                    solitario[posColumnaFinal][posFilaFinal - 1] = " ";
+                    System.out.println("prueba fila -1");
+                    //para arriba
+                } else {
+                    solitario[posColumnaFinal][posFilaFinal + 1] = " ";
+                    System.out.println("prueba fila +1");
+                }
             }
+        } else {
+            System.out.println("error");
         }
-        //movimiento horizontal
-        if (posFilaOrigen == posFilaFinal) {
-            //para la derecha
-            if (posColumnaOrigen < posColumnaFinal) {
-                solitario[posColumnaFinal - 1][posFilaFinal] = " ";
-                System.out.println("prueba Columna -1");
+        if (posFilaFinal > 1 && posFilaFinal < 5) {
 
-            } else {
-                //para la izquierda
-                solitario[posColumnaFinal + 1][posFilaFinal] = " ";
-                System.out.println("prueba Columna +1");
+            //movimiento horizontal
+            if (posFilaOrigen == posFilaFinal) {
+                //para la derecha
+                if (posColumnaOrigen < posColumnaFinal) {
+                    solitario[posColumnaFinal - 1][posFilaFinal] = " ";
+                    System.out.println("prueba Columna -1");
+
+                } else {
+                    //para la izquierda
+                    solitario[posColumnaFinal + 1][posFilaFinal] = " ";
+                    System.out.println("prueba Columna +1");
+                }
             }
+        } else {
+            System.out.println("error");
         }
+
         //Contenido Posicion Final
 //        String posAMover = solitario[posColumnaFinal][posFilaFinal];
         return fichaOrigen;
@@ -122,13 +132,13 @@ public class Solitario {
 //            System.out.println("Error");
 //        }
 // 
-//        if (solitario[posFilaFinal]<solitario[2]&&solitario[posfilaFinal]>solitario[5]) {
+//       
 //            
 //        }
 //        return "pon otro movimiento";
 //    }
 //    
- 
+
 //     * Hay que evitar los movimientos menores de la columna 2 y mayores que 5 y
 //     * menor que la fila 2 y mayores que 5 /
 //     *
