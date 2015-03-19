@@ -85,8 +85,8 @@ public class Solitario {
         solitario[posColumnaOrigen][posFilaOrigen] = " ";
         System.out.println(solitario[posColumnaOrigen][posFilaOrigen] + "origen");
         System.out.println(solitario[posColumnaFinal][posFilaFinal - 1] + "final -1");
-        System.out.println(solitario[posColumnaFinal][posFilaFinal] == " " + "final");
-        System.out.println(solitario[posColumnaFinal][posFilaFinal + 1] == "*" + "final +1");
+        System.out.println(solitario[posColumnaFinal][posFilaFinal] + "final");
+        System.out.println(solitario[posColumnaFinal][posFilaFinal + 1]  + "final +1");
         
         if (solitario[posColumnaOrigen][posFilaOrigen] == "*" && solitario[posColumnaFinal][posFilaFinal - 1] == "*" && solitario[posColumnaFinal][posFilaFinal] == " ") {
             if (solitario[posColumnaOrigen][posFilaOrigen] == "*" && solitario[posColumnaFinal][posFilaFinal + 1] == "*" && solitario[posColumnaFinal][posFilaFinal] == " ") {
