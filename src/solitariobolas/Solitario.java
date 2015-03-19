@@ -83,40 +83,47 @@ public class Solitario {
         //solitario[posColumnaFinal][posFilaFinal]=fichaOrigen;
         solitario[posColumnaFinal][posFilaFinal] = "*";
         solitario[posColumnaOrigen][posFilaOrigen] = " ";
-
-        if (posColumnaFinal > 1 && posColumnaFinal < 5) {
-            //movimiento vertical
-            if (posColumnaOrigen == posColumnaFinal) {
-                //para abajo
-                if (posFilaOrigen < posFilaFinal) {
-                    solitario[posColumnaFinal][posFilaFinal - 1] = " ";
-                    System.out.println("prueba fila -1");
-                    //para arriba
-                } else {
-                    solitario[posColumnaFinal][posFilaFinal + 1] = " ";
-                    System.out.println("prueba fila +1");
+        System.out.println(solitario[posColumnaOrigen][posFilaOrigen] + "origen");
+        System.out.println(solitario[posColumnaFinal][posFilaFinal - 1] + "final -1");
+        System.out.println(solitario[posColumnaFinal][posFilaFinal] == " " + "final");
+        System.out.println(solitario[posColumnaFinal][posFilaFinal + 1] == "*" + "final +1");
+        
+        if (solitario[posColumnaOrigen][posFilaOrigen] == "*" && solitario[posColumnaFinal][posFilaFinal - 1] == "*" && solitario[posColumnaFinal][posFilaFinal] == " ") {
+            if (solitario[posColumnaOrigen][posFilaOrigen] == "*" && solitario[posColumnaFinal][posFilaFinal + 1] == "*" && solitario[posColumnaFinal][posFilaFinal] == " ") {
+                //movimiento vertical
+                if (posColumnaOrigen == posColumnaFinal) {
+                    if (posFilaOrigen < posFilaFinal) {
+                        //para abajo
+                        solitario[posColumnaFinal][posFilaFinal - 1] = " ";
+                        System.out.println("prueba fila -1");
+                    } else {
+                        //para arriba
+                        solitario[posColumnaFinal][posFilaFinal + 1] = " ";
+                        System.out.println("prueba fila +1");
+                    }
                 }
+            } else {
+                System.out.println("error");
             }
-        } else {
-            System.out.println("error");
         }
-        if (posFilaFinal > 1 && posFilaFinal < 5) {
+        if (solitario[posColumnaOrigen][posFilaOrigen] == "*" && solitario[posColumnaFinal - 1][posFilaFinal] == "*"
+                && solitario[posColumnaFinal][posFilaFinal] == " ") {
+            if (solitario[posColumnaOrigen][posFilaOrigen] == "*" && solitario[posColumnaFinal + 1][posFilaFinal] == "*"
+                    && solitario[posColumnaFinal][posFilaFinal] == " ") {
+                //movimiento horizontal
+                if (posFilaOrigen == posFilaFinal) {
+                    //para la derecha
+                    if (posColumnaOrigen < posColumnaFinal) {
+                        solitario[posColumnaFinal - 1][posFilaFinal] = " ";
+                        System.out.println("prueba Columna -1");
 
-            //movimiento horizontal
-            if (posFilaOrigen == posFilaFinal) {
-                //para la derecha
-                if (posColumnaOrigen < posColumnaFinal) {
-                    solitario[posColumnaFinal - 1][posFilaFinal] = " ";
-                    System.out.println("prueba Columna -1");
-
-                } else {
-                    //para la izquierda
-                    solitario[posColumnaFinal + 1][posFilaFinal] = " ";
-                    System.out.println("prueba Columna +1");
+                    } else {
+                        //para la izquierda
+                        solitario[posColumnaFinal + 1][posFilaFinal] = " ";
+                        System.out.println("prueba Columna +1");
+                    }
                 }
             }
-        } else {
-            System.out.println("error");
         }
 
         //Contenido Posicion Final

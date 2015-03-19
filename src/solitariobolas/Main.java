@@ -1,5 +1,6 @@
 package solitariobolas;
 
+import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -33,6 +34,7 @@ public class Main extends javax.swing.JFrame {
         jTextFieldColumnaFinal = new javax.swing.JTextField();
         jTextFieldFilFinal = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
+        jComboBox1 = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -61,6 +63,13 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2.txt" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -71,7 +80,8 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addGap(106, 106, 106)
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(27, 27, 27)
                             .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButton2))
@@ -110,7 +120,8 @@ public class Main extends javax.swing.JFrame {
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(jButton2)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(12, Short.MAX_VALUE))
@@ -150,6 +161,45 @@ public class Main extends javax.swing.JFrame {
 //        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+//      String nombreFichero = "C:\\Users\\Javier\\Documents\\NetBeansProjects\\SolitarioBolas\\src\\Levels/2.txt";
+//        //Declarar una variable BufferedReader
+//        BufferedReader br = null;
+//        try {
+//           //Crear un objeto BufferedReader al que se le pasa 
+//           //   un objeto FileReader con el nombre del fichero
+//           br = new BufferedReader(new FileReader(nombreFichero));
+//           //Leer la primera línea, guardando en un String
+//           String texto = br.readLine();
+//           //Repetir mientras no se llegue al final del fichero
+//           while(texto != null)
+//           {
+//               //Hacer lo que sea con la línea leída
+//               jTextArea1.setText(texto);
+//               //Leer la siguiente línea
+//               texto = br.readLine();
+//           }
+//        }
+//        catch (FileNotFoundException e) {
+//            System.out.println("Error: Fichero no encontrado");
+//            System.out.println(e.getMessage());
+//        }
+//        catch(Exception e) {
+//            System.out.println("Error de lectura del fichero");
+//            System.out.println(e.getMessage());
+//        }
+//        finally {
+//            try {
+//                if(br != null)
+//                    br.close();
+//            }
+//            catch (Exception e) {
+//                System.out.println("Error al cerrar el fichero");
+//                System.out.println(e.getMessage());
+//            }
+//        }  
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -188,6 +238,7 @@ public class Main extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
