@@ -5,6 +5,10 @@
  */
 package solitariobolas;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+
 /**
  *
  * @author Javier
@@ -83,69 +87,91 @@ public class Solitario {
         //solitario[posColumnaFinal][posFilaFinal]=fichaOrigen;
         solitario[posColumnaFinal][posFilaFinal] = "*";
         solitario[posColumnaOrigen][posFilaOrigen] = " ";
-        System.out.println(solitario[posColumnaOrigen][posFilaOrigen] + "origen");
-        System.out.println(solitario[posColumnaFinal][posFilaFinal - 1] + "final -1");
-        System.out.println(solitario[posColumnaFinal][posFilaFinal] + "final");
-        System.out.println(solitario[posColumnaFinal][posFilaFinal + 1]  + "final +1");
-        
-        if (solitario[posColumnaOrigen][posFilaOrigen] == "*" && solitario[posColumnaFinal][posFilaFinal - 1] == "*" && solitario[posColumnaFinal][posFilaFinal] == " ") {
-            if (solitario[posColumnaOrigen][posFilaOrigen] == "*" && solitario[posColumnaFinal][posFilaFinal + 1] == "*" && solitario[posColumnaFinal][posFilaFinal] == " ") {
-                //movimiento vertical
-                if (posColumnaOrigen == posColumnaFinal) {
-                    if (posFilaOrigen < posFilaFinal) {
-                        //para abajo
-                        solitario[posColumnaFinal][posFilaFinal - 1] = " ";
-                        System.out.println("prueba fila -1");
-                    } else {
-                        //para arriba
-                        solitario[posColumnaFinal][posFilaFinal + 1] = " ";
-                        System.out.println("prueba fila +1");
-                    }
-                }
-            } else {
-                System.out.println("error");
-            }
-        }
-        if (solitario[posColumnaOrigen][posFilaOrigen] == "*" && solitario[posColumnaFinal - 1][posFilaFinal] == "*"
-                && solitario[posColumnaFinal][posFilaFinal] == " ") {
-            if (solitario[posColumnaOrigen][posFilaOrigen] == "*" && solitario[posColumnaFinal + 1][posFilaFinal] == "*"
-                    && solitario[posColumnaFinal][posFilaFinal] == " ") {
-                //movimiento horizontal
-                if (posFilaOrigen == posFilaFinal) {
-                    //para la derecha
-                    if (posColumnaOrigen < posColumnaFinal) {
-                        solitario[posColumnaFinal - 1][posFilaFinal] = " ";
-                        System.out.println("prueba Columna -1");
 
-                    } else {
-                        //para la izquierda
-                        solitario[posColumnaFinal + 1][posFilaFinal] = " ";
-                        System.out.println("prueba Columna +1");
-                    }
-                }
+//        if (solitario[posColumnaOrigen][posFilaOrigen].equals("*") && solitario[posColumnaFinal][posFilaFinal - 1].equals("*") 
+//                && solitario[posColumnaFinal][posFilaFinal].equals("*")) {
+//            if (solitario[posColumnaOrigen][posFilaOrigen].equals("*") && solitario[posColumnaFinal][posFilaFinal + 1].equals("*")
+//                    && solitario[posColumnaFinal][posFilaFinal].equals(" ")) {
+        //movimiento vertical
+        if (posColumnaOrigen == posColumnaFinal) {
+            if (posFilaOrigen < posFilaFinal) {
+                //para abajo
+                solitario[posColumnaFinal][posFilaFinal - 1] = " ";
+                System.out.println("prueba fila -1");
+            } else {
+                //para arriba
+                solitario[posColumnaFinal][posFilaFinal + 1] = " ";
+                System.out.println("prueba fila +1");
+            }
+        } else {
+            System.out.println("error");
+        }
+//        }
+//        if (solitario[posColumnaOrigen][posFilaOrigen].equals("*") && solitario[posColumnaFinal - 1][posFilaFinal].equals("*")
+//                && solitario[posColumnaFinal][posFilaFinal].equals(" ")) {
+//            System.out.println("esta es la de la filas de izquierda a derecha");
+//            if (solitario[posColumnaOrigen][posFilaOrigen].equals("*")&& solitario[posColumnaFinal + 1][posFilaFinal].equals("*")
+//                    && solitario[posColumnaFinal][posFilaFinal].equals(" ")) {
+//                System.out.println("esta es la de las filas de derecha a izquierda");
+        //movimiento horizontal
+        if (posFilaOrigen == posFilaFinal) {
+            //para la derecha
+            if (posColumnaOrigen < posColumnaFinal) {
+                solitario[posColumnaFinal - 1][posFilaFinal] = " ";
+                System.out.println("prueba Columna -1");
+
+            } else {
+                //para la izquierda
+                solitario[posColumnaFinal + 1][posFilaFinal] = " ";
+                System.out.println("prueba Columna +1");
             }
         }
+//            }
+//        }
 
         //Contenido Posicion Final
 //        String posAMover = solitario[posColumnaFinal][posFilaFinal];
         return fichaOrigen;
     }
-//    public String colision(int posicionColumnaFinal, int posicionFilaFinal ){
-//        
-//        //Si en la posicion Adyacente hay un "*" y la siguiente esta vacio que se mueva
-//        
-//        String posFinal=solitario[posicionColumnaFinal][posicionFilaFinal];
-//        if (solitario[posColumnaFinal]<solitario[2]&&solitario[posColumnaFinal]>solitario[5])) {
-//            System.out.println("Error");
-//        }
-// 
-//       
-//            
-//        }
-//        return "pon otro movimiento";
-//    }
-//    
 
+    public String mostrarNiveles() {
+        String nombreFichero = "Levels/2.txt";
+        //Declarar una variable BufferedReader
+        BufferedReader br = null;
+        try {
+           //Crear un objeto BufferedReader al que se le pasa 
+            //   un objeto FileReader con el nombre del fichero
+            br = new BufferedReader(new FileReader(nombreFichero));
+            //Leer la primera línea, guardando en un String
+            String texto = br.readLine();
+            //Repetir mientras no se llegue al final del fichero
+            while (texto != null) {
+                //Hacer lo que sea con la línea leída
+                System.out.println(texto);
+                //Leer la siguiente línea
+                texto = br.readLine();
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("Error: Fichero no encontrado");
+            System.out.println(e.getMessage());
+        } catch (Exception e) {
+            System.out.println("Error de lectura del fichero");
+            System.out.println(e.getMessage());
+        } finally {
+            try {
+                if (br != null) {
+                    br.close();
+                }
+            } catch (Exception e) {
+                System.out.println("Error al cerrar el fichero");
+                System.out.println(e.getMessage());
+            }
+        }
+
+        return tablero;
+    }
+
+//    
 //     * Hay que evitar los movimientos menores de la columna 2 y mayores que 5 y
 //     * menor que la fila 2 y mayores que 5 /
 //     *

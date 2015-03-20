@@ -7,11 +7,13 @@ import java.io.IOException;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JTextArea;
 
 public class Main extends javax.swing.JFrame {
 
     Solitario tableroSolitario = new Solitario();
     Properties properties = new Properties();
+
     public Main() {
         initComponents();
         //si es void es solo llamarlo
@@ -78,23 +80,24 @@ public class Main extends javax.swing.JFrame {
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(27, 27, 27)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(17, 17, 17)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTextFieldFilaInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextFieldColumnaInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(31, 31, 31)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton2)))
+                        .addGap(43, 43, 43)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton2))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addGap(17, 17, 17)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTextFieldFilaInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jTextFieldColumnaInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(31, 31, 31)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel1)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(43, 43, 43)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jTextFieldColumnaFinal)
                                 .addComponent(jTextFieldFilFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))))
@@ -138,7 +141,6 @@ public class Main extends javax.swing.JFrame {
         int posColumnaFinal = Integer.valueOf(jTextFieldColumnaFinal.getText());
         int posFilaFinal = Integer.valueOf(jTextFieldFilFinal.getText());
 
-        
         tableroSolitario.getMovimientos(posColumnaOrigen, posFilaOrigen, posColumnaFinal, posFilaFinal);
         jTextArea1.setText(tableroSolitario.mostrarTablero());
 
@@ -146,58 +148,51 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        jTextArea1.setText(tableroSolitario.mostrarNiveles());
+        System.out.println(tableroSolitario.mostrarNiveles());
+    
+
+        //String nombreFichero = "Levels/" + jComboBox1.getSelectedItem()+".txt";
+////        Declarar una variable BufferedReader
+//        BufferedReader br = null;
 //        try {
-//            FileReader fr;
-//            int caract;
-//            fr = new FileReader("nombre_fichero.txt");
-//            caract = fr.read();
-//            while (caract != -1) {
-//                //Hacer algo con el carácter leído
-//                caract = fr.read();
-//            }       } catch (FileNotFoundException ex) {
-//            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-//        } catch (IOException ex) {
-//            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+//            //Crear un objeto BufferedReader al que se le pasa 
+//            //   un objeto FileReader con el nombre del fichero
+//            br = new BufferedReader(new FileReader(nombreFichero));
+//            //Leer la primera línea, guardando en un String
+//            String texto = br.readLine();
+//            //Repetir mientras no se llegue al final del fichero
+//            while (texto != null) {
+//                for (int i = 0; i < 7; i++) {
+//                    for (int j = 0; j < 7; j++) {
+//                            tableroSolitario.crearTablero();
+//                        //Hacer lo que sea con la línea leída
+//                        System.out.println(texto);
+//                        //Leer la siguiente línea
+//                        texto = br.readLine();
+//                    }
+//                }
+//            }
+//        } catch (FileNotFoundException e) {
+//            System.out.println("Error: Fichero no encontrado");
+//            System.out.println(e.getMessage());
+//        } catch (Exception e) {
+//            System.out.println("Error de lectura del fichero");
+//            System.out.println(e.getMessage());
+//        } finally {
+//            try {
+//                if (br != null) {
+//                    br.close();
+//                }
+//            } catch (Exception e) {
+//                System.out.println("Error al cerrar el fichero");
+//                System.out.println(e.getMessage());
+//            }
 //        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-      String nombreFichero = "Levels/" + jComboBox1.getSelectedItem();
-//        Declarar una variable BufferedReader
-        BufferedReader br = null;
-        try {
-           //Crear un objeto BufferedReader al que se le pasa 
-           //   un objeto FileReader con el nombre del fichero
-           br = new BufferedReader(new FileReader(nombreFichero));
-           //Leer la primera línea, guardando en un String
-           String texto = br.readLine();
-           //Repetir mientras no se llegue al final del fichero
-           while(texto != null)
-           {
-               //Hacer lo que sea con la línea leída
-               jTextArea1.setText(texto);
-               //Leer la siguiente línea
-               texto = br.readLine();
-           }
-        }
-        catch (FileNotFoundException e) {
-            System.out.println("Error: Fichero no encontrado");
-            System.out.println(e.getMessage());
-        }
-        catch(Exception e) {
-            System.out.println("Error de lectura del fichero");
-            System.out.println(e.getMessage());
-        }
-        finally {
-            try {
-                if(br != null)
-                    br.close();
-            }
-            catch (Exception e) {
-                System.out.println("Error al cerrar el fichero");
-                System.out.println(e.getMessage());
-            }
-        }  
+
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     /**
