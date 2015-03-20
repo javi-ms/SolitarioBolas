@@ -25,6 +25,14 @@ public class Solitario {
 
     String[][] solitario = new String[FIL][COL];
 
+    public String[][] getSolitario() {
+        return solitario;
+    }
+
+    public void setSolitario(String[][] solitario) {
+        this.solitario = solitario;
+    }
+
 //         * * *
 //         * * *
 //     * * * * * * * 
