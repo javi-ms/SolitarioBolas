@@ -8,6 +8,10 @@ package solitariobolas;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -40,14 +44,6 @@ public class Solitario {
 //     * * * * * * * 
 //         * * * 
 //         * * *
-//    public int moverFicha(int posicionColumna, int posicionFila){
-//    hay que recoger la informacion que haya en una posicion y moverla 
-//    a dos posiciones de distancia, excepto cuando haya dos posiciones seguidas ocupadas
-//    solo lo moveremos cuando la posicion adyacente este ocupada y la siguiente vacia
-//        if (posicionColumna &&posicionFila ==isEmpty) {
-//            
-//        }
-//    }
     public void crearTablero() {
         //crear tablero en blanco
         for (int fila = 0; fila < 7; fila++) {
@@ -142,46 +138,75 @@ public class Solitario {
         return fichaOrigen;
     }
 
-    public String mostrarNiveles() {
-        String nombreFichero = "Levels/2.txt";
-        //Declarar una variable BufferedReader
-        BufferedReader br = null;
-        try {
-           //Crear un objeto BufferedReader al que se le pasa 
-            //   un objeto FileReader con el nombre del fichero
-            br = new BufferedReader(new FileReader(nombreFichero));
-            //Leer la primera línea, guardando en un String
-            String texto = br.readLine();
-            //Repetir mientras no se llegue al final del fichero
-            while (texto != null) {
-                //Hacer lo que sea con la línea leída
-                System.out.println(texto);
-                //Leer la siguiente línea
-                texto = br.readLine();
-            }
-        } catch (FileNotFoundException e) {
-            System.out.println("Error: Fichero no encontrado");
-            System.out.println(e.getMessage());
-        } catch (Exception e) {
-            System.out.println("Error de lectura del fichero");
-            System.out.println(e.getMessage());
-        } finally {
-            try {
-                if (br != null) {
-                    br.close();
-                }
-            } catch (Exception e) {
-                System.out.println("Error al cerrar el fichero");
-                System.out.println(e.getMessage());
-            }
-        }
+    public void mostrarNiveles(String ruta_archivo) {
 
-        return tablero;
+        BufferedReader br = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream(ruta_archivo)));
+
+        try {
+            String texto = br.readLine();
+            while (texto != null) {
+                for (int i = 0; i < FIL; i++) {
+                    for (int j = 0; j < COL; j++) {
+                        solitario[i][j] = String.valueOf(texto.charAt(j));
+                    }
+                    texto = br.readLine();
+                }
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(Solitario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
     }
 
+//        String nombreFichero = "Levels/2.txt";
+//        //Declarar una variable BufferedReader
+//        BufferedReader br = null;
+//        String datosFichero = "";
+//        try {
+//            //Crear un objeto BufferedReader al que se le pasa 
+//            //   un objeto FileReader con el nombre del fichero
+//            br = new BufferedReader(new FileReader(nombreFichero));
+//            //Leer la primera línea, guardando en un String
+//            String texto = br.readLine();
+//            //Repetir mientras no se llegue al final del fichero
+//            while (texto != null) {
+//                //Hacer lo que sea con la línea leída
+//                //Bucle doble que recorre la matriz
+//               datosFichero = texto;
+//                //Leer la siguiente línea
+//                  texto = br.readLine();
+//            }
+//             for (int i = 0; i < FIL; i++) {
+//                    for (int j = 0; j < COL; j++) {
+//
+//                        solitario[i][j] = datosFichero;
+//                        System.out.println(solitario[i][j]);
+//                    }
+//                }
+//        } catch (FileNotFoundException e) {
+//            System.out.println("Error: Fichero no encontrado");
+//            System.out.println(e.getMessage());
+//        } catch (Exception e) {
+//            System.out.println("Error de lectura del fichero");
+//            System.out.println(e.getMessage());
+//        } finally {
+//            try {
+//                if (br != null) {
+//                    br.close();
+//                }
+//            } catch (Exception e) {
+//                System.out.println("Error al cerrar el fichero");
+//                System.out.println(e.getMessage());
+//            }
+//        }
+//
+//        return tablero;
+//    }
 //    
 //     * Hay que evitar los movimientos menores de la columna 2 y mayores que 5 y
 //     * menor que la fila 2 y mayores que 5 /
 //     *
 //     * }
+    
+    
 }

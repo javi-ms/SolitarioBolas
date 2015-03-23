@@ -65,7 +65,7 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2.txt", "3.txt" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2", "3" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -148,47 +148,71 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        jTextArea1.setText(tableroSolitario.mostrarNiveles());
-        System.out.println(tableroSolitario.mostrarNiveles());
+          String ruta = "";
+
+        switch (jComboBox1.getSelectedIndex()) {
+            case 0:
+                ruta = "Levels/2.txt";
+                
+                break;
+            case 1:
+                ruta = "Levels/3.txt";
+                
+                break;
+            case 2:
+                ruta = "Levels/4.txt";
+                
+                break;
+            case 3:
+                ruta = "Levels/5.txt";
+               
+                break;
+        }
+
+        tableroSolitario = new Solitario();
+        tableroSolitario.mostrarNiveles(ruta);
+        jTextArea1.setText(tableroSolitario.mostrarTablero());
+    }
+
     
 
-        String nombreFichero = "Levels/" + jComboBox1.getSelectedItem()+".txt";
-//        Declarar una variable BufferedReader
-        BufferedReader br = null;
-        try {
-            //Crear un objeto BufferedReader al que se le pasa 
-            //   un objeto FileReader con el nombre del fichero
-            br = new BufferedReader(new FileReader(nombreFichero));
-            //Leer la primera línea, guardando en un String
-            String texto = br.readLine();
-            //Repetir mientras no se llegue al final del fichero
-            while (texto != null) {
-                for (int i = 0; i < 7; i++) {
-                    for (int j = 0; j < 7; j++) {
-                            tableroSolitario.getSolitario();
-                        //Hacer lo que sea con la línea leída
-                        System.out.println(texto);
-                        //Leer la siguiente línea
-                        texto = br.readLine();
-                    }
-                }
-            }
-        } catch (FileNotFoundException e) {
-            System.out.println("Error: Fichero no encontrado");
-            System.out.println(e.getMessage());
-        } catch (Exception e) {
-            System.out.println("Error de lectura del fichero");
-            System.out.println(e.getMessage());
-        } finally {
-            try {
-                if (br != null) {
-                    br.close();
-                }
-            } catch (Exception e) {
-                System.out.println("Error al cerrar el fichero");
-                System.out.println(e.getMessage());
-            }
-        }
+//        String nombreFichero = "Levels/" + jComboBox1.getSelectedItem()+".txt";
+////        Declarar una variable BufferedReader
+//        BufferedReader br = null;
+////        try {
+//            //Crear un objeto BufferedReader al que se le pasa 
+//            //   un objeto FileReader con el nombre del fichero
+//            br = new BufferedReader(new FileReader(nombreFichero));
+//            //Leer la primera línea, guardando en un String
+//            String texto = br.readLine();
+//            //Repetir mientras no se llegue al final del fichero
+//            while (texto != null) {
+//                for (int i = 0; i < 7; i++) {
+//                    for (int j = 0; j < 7; j++) {
+//                            tableroSolitario.getSolitario();
+//                        //Hacer lo que sea con la línea leída
+//                        System.out.println(texto);
+//                        //Leer la siguiente línea
+//                        texto = br.readLine();
+//                    }
+//                }
+//            }
+//        } catch (FileNotFoundException e) {
+//            System.out.println("Error: Fichero no encontrado");
+//            System.out.println(e.getMessage());
+//        } catch (Exception e) {
+//            System.out.println("Error de lectura del fichero");
+//            System.out.println(e.getMessage());
+//        } finally {
+//            try {
+//                if (br != null) {
+//                    br.close();
+//                }
+//            } catch (Exception e) {
+//                System.out.println("Error al cerrar el fichero");
+//                System.out.println(e.getMessage());
+//            }
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
